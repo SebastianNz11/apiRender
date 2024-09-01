@@ -15,7 +15,7 @@ app.use(routesLibros);
 app.use(routesPrestamos);
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: '*',
     methods: ["GET", "PATCH", "POST", "DELETE"],
   })
 );
