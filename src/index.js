@@ -1,4 +1,5 @@
 import express from "express";
+import cors from 'cors'
 import { sequelize } from "./database/database.js";
 import routesLibros from "./routes/libro.routes.js";
 import routesPrestamos from "./routes/prestamo.routes.js";
@@ -12,6 +13,12 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(routesLibros);
 app.use(routesPrestamos);
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+    methods: ["GET", "PATCH", "POST", "DELETE"],
+  })
+);
 
 const main = () => {
   app.listen(process.env.PORT, async () => {
